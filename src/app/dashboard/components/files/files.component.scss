@@ -1,0 +1,80 @@
+.files {
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .files-content {
+    height: calc(100% - 56px);
+    overflow: auto;
+  }
+
+  .posts {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #2199e8;
+    border-radius: 4px;
+    position: relative;
+    margin: 15px;
+
+    .post-name {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &::ng-deep {
+        .highlight {
+          color: #2199e8;
+        }
+      }
+    }
+
+    .post-message {
+      font-size: 14px;
+      margin-top: 15px;
+      max-width: calc(100% - 80px);
+      @media screen and (max-width: 600px) {
+        font-size: 12px;
+        max-width: 100%;
+      }
+    }
+
+    .post-date {
+      font-size: 12px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      @media screen and (max-width: 600px) {
+        right: 55px;
+      }
+    }
+
+    .post-delete {
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 12px;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      @media screen and (max-width: 600px) {
+        bottom: unset;
+        top: 15px;
+      }
+    }
+  }
+
+  .search {
+    padding: 15px 15px 0;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .pagination {
+    margin-top: auto;
+    box-shadow: 0px -2px 5px 0px rgba(168, 168, 168, 1);
+  }
+}

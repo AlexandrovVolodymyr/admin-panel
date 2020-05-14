@@ -1,0 +1,27 @@
+<div class="files">
+  <ng-container *ngIf="posts && posts.length; else loading">
+    <!--   *ngIf="posts$ | async as posts; else loading">  -->
+    <div class="files-content">
+      <div class="search">
+        <mat-form-field appearance="fill">
+          <mat-label>Введите название</mat-label>
+          <input matInput [(ngModel)]="search">
+        </mat-form-field>
+      </div>
+      <div class="posts"
+           *ngFor="let post of posts | searchPosts: search | paginate: {itemsPerPage: itemsPerPage, currentPage: page}">
+        <div class="post-name" innerHTML="{{ post.name | highlightText : search }}"></div>
+        <div class="post-message">{{ post.message }}</div>
+        <div class="post-date">{{ post.date | date: 'dd-MM-yyyy' }}</div>
+        <div class="post-delete" (click)="deletePost(post['id'])">delete</div>
+      </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>

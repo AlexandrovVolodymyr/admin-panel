@@ -1,0 +1,31 @@
+<main class="main">
+  <mat-drawer-container class="page-container" (backdropClick)="backdropClick()">
+    <mat-drawer [mode]="mode" class="sidebar" [opened]="isOpen">
+      <app-header (onToggle)="toggle($event)"></app-header>
+      <mat-list class="mat-nav-list">
+        <mat-list-item matRipple [routerLink]="['/dashboard', 'profile']" routerLinkActive="mat-tab-link">
+          Profile
+        </mat-list-item>
+        <mat-list-item matRipple [routerLink]="['/dashboard', 'files']" routerLinkActive="mat-tab-link">
+          Files
+        </mat-list-item>
+        <mat-list-item matRipple [routerLink]="['/dashboard', 'create-post']" routerLinkActive="mat-tab-link">
+          Create post
+        </mat-list-item>
+        <mat-list-item matRipple (click)="logout()">
+          Logout
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button
+                *ngIf="isOpen === false"
+                (click)="isOpen = true">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</main>

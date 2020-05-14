@@ -1,0 +1,8 @@
+<div class="login-page">
+
+  <div class="alert" *ngIf="authService.error$ | async as error">{{ error }}</div>
+
+  <div class="alert alert-info" *ngIf="messageError">{{ messageError }}</div>
+
+  <app-login-form (submitLoginForm)="submit($event)"></app-login-form>
+</div>

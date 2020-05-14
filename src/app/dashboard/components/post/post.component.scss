@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  margin: 15px auto;
+  padding: 0 15px;
+
+  textarea {
+    min-height: 75px;
+  }
+
+  button {
+    max-width: 150px;
+  }
+
+  .error {
+    border: 1px solid crimson;
+  }
+}
