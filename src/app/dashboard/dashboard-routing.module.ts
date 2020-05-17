@@ -4,6 +4,7 @@ import { MainPageComponent } from './container/main-page/main-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FilesComponent } from './components/files/files.component';
 import { PostComponent } from './components/post/post.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       {path: 'profile', component: ProfileComponent},
       {path: 'files', component: FilesComponent},
+      {path: 'table', component: TableComponent},
       {path: 'create-post', component: PostComponent},
       // {
       //   path: '**',

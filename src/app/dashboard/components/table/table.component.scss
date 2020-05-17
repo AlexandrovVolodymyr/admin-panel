@@ -1,0 +1,19 @@
+.table-wrapper {
+  height: calc(100% - 64px);
+  overflow: auto;
+  padding: 15px;
+
+  table {
+    border-collapse: collapse;
+    thead {
+      tr {
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+
+    td, th {
+      border: 1px solid #d3c3a6;
+    }
+  }
+}

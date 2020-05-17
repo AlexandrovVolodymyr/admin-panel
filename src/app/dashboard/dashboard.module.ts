@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPostsPipe } from '../shared/pipes/search-posts.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HighlightTextPipe } from '../shared/pipes/highlight-text.pipe';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { HighlightTextPipe } from '../shared/pipes/highlight-text.pipe';
     FilesComponent,
     PostComponent,
     SearchPostsPipe,
-    HighlightTextPipe
+    HighlightTextPipe,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { HighlightTextPipe } from '../shared/pipes/highlight-text.pipe';
     MatListModule,
     MatRippleModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule

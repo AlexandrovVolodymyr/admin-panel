@@ -1,0 +1,20 @@
+<div class="table-wrapper">
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>userId</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of dataSource">
+      <td>{{user.userId}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.title}}</td>
+      <td>{{user.body}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
