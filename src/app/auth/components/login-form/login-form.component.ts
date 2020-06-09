@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  submitForm() {
+  public submitForm(): void {
     if (this.loginForm.valid) {
       this.submitLoginForm.emit(this.loginForm);
     } else {
@@ -27,4 +27,7 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
+  public changeInputType(input: HTMLInputElement): void {
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

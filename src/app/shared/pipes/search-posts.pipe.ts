@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IPost } from '../post';
+import { IPost } from '../interfaces/post';
 
 @Pipe({
   name: 'searchPosts'

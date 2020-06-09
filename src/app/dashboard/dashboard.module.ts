@@ -21,6 +21,7 @@ import { HighlightTextPipe } from '../shared/pipes/highlight-text.pipe';
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ]
 })
 export class DashboardModule {

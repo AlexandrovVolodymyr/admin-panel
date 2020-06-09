@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { User } from '../../shared/user';
+import { User } from '../../shared/interfaces/user';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -12,15 +12,21 @@ export class AuthService {
 
   public error$: Subject<string> = new Subject<string>();
 
+  private _refreshToken: string;
+
   constructor(private _http: HttpClient) { }
 
-  get token(): string {
+  public get token(): string {
     const expiredDate = new Date(localStorage.getItem('token-fb-exp'));
     if (new Date() > expiredDate) {
       this.logout();
       return null;
     }
     return localStorage.getItem('token-fb');
+  }
+
+  public get refreshToken(): string {
+    return this._refreshToken;
   }
 
   public login(user: User): Observable<any> {
@@ -67,7 +73,8 @@ export class AuthService {
     console.log(response);
     if (response) {
       // current time + token time * 1000 (miliseconds)
-      const expiresDate = new Date(new Date().getTime() + response.expiresIn * 1000);
+      // const expiresDate = new Date(new Date().getTime() + response.expiresIn * 1000);
+      const expiresDate = new Date(new Date().getTime() + 50000);
       localStorage.setItem('token-fb', response.idToken);
       localStorage.setItem('token-fb-exp', expiresDate.toString());
     } else {

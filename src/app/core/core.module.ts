@@ -1,8 +1,15 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, Provider, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { throwIfAlreadyLoaded } from './utils';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+};
 
 @NgModule({
   declarations: [],
@@ -10,6 +17,9 @@ import { throwIfAlreadyLoaded } from './utils';
     CommonModule,
     RouterModule,
     HttpClientModule
+  ],
+  providers: [
+    INTERCEPTOR_PROVIDER
   ]
 })
 export class CoreModule {

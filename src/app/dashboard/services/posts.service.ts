@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPost } from '../../shared/post';
+import { IPost } from '../../shared/interfaces/post';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
@@ -13,12 +13,9 @@ export class PostsService {
 
   constructor(private _http: HttpClient, private _auth: AuthService) { }
 
-  create(post: IPost) {
-    // для этого есть интерцептор, но я не могу его юзать, тк логин не работает если я добавлю его.
-    const token = this._auth.token;
-
+  public create(post: IPost) {
     // firebase naming table - [name].json
-    return this._http.post<IPost>(`${environment.postsDBUrl}/posts.json?auth=${token}`, post)
+    return this._http.post<IPost>(`${environment.postsDBUrl}/posts.json`, post)
       .pipe(
         map((response: any) => {
           return {
@@ -29,7 +26,7 @@ export class PostsService {
       );
   }
 
-  getAll(): Observable<IPost[]> {
+  public getAll(): Observable<IPost[]> {
     return this._http.get(`${environment.postsDBUrl}/posts.json`)
       .pipe(
         map((response: {[key: string]: any}) => {
@@ -41,8 +38,7 @@ export class PostsService {
       );
   }
 
-  remove(id: number | string): Observable<void> {
-    const token = this._auth.token;
-    return this._http.delete<void>(`${environment.postsDBUrl}/posts/${id}.json?auth=${token}`);
+  public remove(id: number | string): Observable<void> {
+    return this._http.delete<void>(`${environment.postsDBUrl}/posts/${id}.json`);
   }
 }

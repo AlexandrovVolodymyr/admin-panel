@@ -1,24 +1,17 @@
 <form [formGroup]="postForm" (ngSubmit)="submit()">
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-    <mat-error *ngIf="f.name.invalid && f.name.touched">Обязательное поле</mat-error>
+    <input matInput formControlName="name"
+           [errorStateMatcher]="errorStateMatcher">
+    <mat-error *ngIf="controls.name.invalid && (controls.name.dirty || controls.name.touched)">Обязательное поле</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Message</mat-label>
-    <textarea matInput formControlName="message"></textarea>
-    <mat-error *ngIf="f.message.invalid && f.message.touched">Обязательное поле</mat-error>
+    <textarea matInput formControlName="message"
+              [errorStateMatcher]="errorStateMatcher"></textarea>
+    <mat-error *ngIf="controls.message.invalid && (controls.message.dirty || controls.message.touched)">Обязательное поле</mat-error>
   </mat-form-field>
-<!--  <label>-->
-<!--    <input type="text" formControlName="name" [ngClass]="{error: f.name.invalid && f.name.touched}">-->
-<!--    <span *ngIf="f.name.invalid && f.name.touched">Обязательное поле</span>-->
-<!--  </label>-->
-
-<!--  <label>-->
-<!--    <textarea type="text" formControlName="message" [ngClass]="{error: f.name.invalid && f.name.touched}"></textarea>-->
-<!--    <span *ngIf="f.message.invalid && f.message.touched">Обязательное поле</span>-->
-<!--  </label>-->
 
   <button type="submit" mat-raised-button color="primary">Save</button>
 </form>
