@@ -3,9 +3,6 @@
     <mat-drawer [mode]="mode" class="sidebar" [opened]="isOpen">
       <app-header (onToggle)="toggle($event)"></app-header>
       <mat-list class="mat-nav-list">
-        <mat-list-item matRipple [routerLink]="['/dashboard', 'profile']" routerLinkActive="mat-tab-link">
-          Profile
-        </mat-list-item>
         <mat-list-item matRipple [routerLink]="['/dashboard', 'files']" routerLinkActive="mat-tab-link">
           Files
         </mat-list-item>
